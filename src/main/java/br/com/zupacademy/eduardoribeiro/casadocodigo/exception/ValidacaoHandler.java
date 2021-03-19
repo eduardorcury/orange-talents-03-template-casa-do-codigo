@@ -34,4 +34,11 @@ public class ValidacaoHandler {
 
     }
 
+    @ExceptionHandler(IllegalStateException.class)
+    public ResponseEntity<String> illegalStateHandler(IllegalStateException exception) {
+
+        return ResponseEntity.badRequest().body(exception.getMessage());
+
+    }
+
 }
