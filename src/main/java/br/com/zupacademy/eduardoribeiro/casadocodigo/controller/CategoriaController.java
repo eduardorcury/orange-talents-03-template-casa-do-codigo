@@ -19,16 +19,16 @@ public class CategoriaController {
     @PersistenceContext
     private EntityManager entityManager;
 
-    private final NomeCategoriaUnicoValidator validator;
-
-    public CategoriaController(NomeCategoriaUnicoValidator validator) {
-        this.validator = validator;
-    }
-
-    @InitBinder
-    public void init(WebDataBinder binder) {
-        binder.addValidators(validator);
-    }
+//    private final NomeCategoriaUnicoValidator validator;
+//
+//    public CategoriaController(NomeCategoriaUnicoValidator validator) {
+//        this.validator = validator;
+//    }
+//
+//    @InitBinder
+//    public void init(WebDataBinder binder) {
+//        binder.addValidators(validator);
+//    }
 
     @PostMapping(consumes = { "application/json" })
     @Transactional

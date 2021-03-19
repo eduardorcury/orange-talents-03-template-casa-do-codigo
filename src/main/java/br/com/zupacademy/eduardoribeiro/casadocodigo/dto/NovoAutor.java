@@ -1,6 +1,7 @@
 package br.com.zupacademy.eduardoribeiro.casadocodigo.dto;
 
 import br.com.zupacademy.eduardoribeiro.casadocodigo.model.Autor;
+import br.com.zupacademy.eduardoribeiro.casadocodigo.validation.Unico;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
@@ -13,6 +14,7 @@ public class NovoAutor {
 
     @NotBlank
     @Email
+    @Unico(campo = "email", classe = Autor.class)
     private String email;
 
     @NotBlank

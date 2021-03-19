@@ -19,16 +19,16 @@ public class AutorController {
     @PersistenceContext
     private EntityManager entityManager;
 
-    private final EmailUnicoValidator emailUnicoValidator;
+//    private final EmailUnicoValidator emailUnicoValidator;
+//
+//    public AutorController(EmailUnicoValidator emailUnicoValidator) {
+//        this.emailUnicoValidator = emailUnicoValidator;
+//    }
 
-    public AutorController(EmailUnicoValidator emailUnicoValidator) {
-        this.emailUnicoValidator = emailUnicoValidator;
-    }
-
-    @InitBinder
-    public void init(WebDataBinder binder) {
-        binder.addValidators(emailUnicoValidator);
-    }
+//    @InitBinder
+//    public void init(WebDataBinder binder) {
+//        binder.addValidators(emailUnicoValidator);
+//    }
 
     @PostMapping(consumes = { "application/json" })
     @Transactional
