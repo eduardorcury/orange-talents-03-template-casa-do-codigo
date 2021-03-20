@@ -20,6 +20,10 @@ public class ExisteEntidadeValidator implements ConstraintValidator<ExisteEntida
     @Override
     public boolean isValid(Long id, ConstraintValidatorContext context) {
 
+        if (id == null) {
+            return false;
+        }
+
         Object objeto = entityManager.find(entidade, id);
         return objeto != null;
 
