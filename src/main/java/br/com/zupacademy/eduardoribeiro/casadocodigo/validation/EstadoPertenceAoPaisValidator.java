@@ -33,18 +33,20 @@ public class EstadoPertenceAoPaisValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
 
-        NovoCliente novoCliente = (NovoCliente) target;
+        if(errors.hasErrors()) {
+            return;
+        }
 
-        if (novoCliente.getPaisId() != null) {
-            Pais pais = entityManager.find(Pais.class, novoCliente.getPaisId());
-            if (pais != null && pais.possuiEstados()) {
-                Assert.state(novoCliente.getEstadoId() != null, "ID do estado não pode ser nulo");
-                Optional<Estado> estadoOptional = estadoRepository.findById(novoCliente.getEstadoId());
-                estadoOptional.ifPresentOrElse((estado) -> {
-                    if (!estado.pertenceAoPais(pais)) {
-                        errors.rejectValue("estadoId", null, "Estado não pertence ao país informado");
-                    }}, () -> errors.rejectValue("estadoId", null,"Estado não encontrado"));
-            }
+        NovoCliente novoCliente = (NovoCliente) target;
+        Pais pais = entityManager.find(Pais.class, novoCliente.getPaisId());
+
+        if (pais != null && pais.possuiEstados()) {
+            Assert.state(novoCliente.getEstadoId() != null, "ID do estado não pode ser nulo");
+            Optional<Estado> estadoOptional = estadoRepository.findById(novoCliente.getEstadoId());
+            estadoOptional.ifPresent((estado) -> {
+                if (!estado.pertenceAoPais(pais)) {
+                    errors.rejectValue("estadoId", null, "Estado não pertence ao país informado");
+                }});
         }
     }
 }

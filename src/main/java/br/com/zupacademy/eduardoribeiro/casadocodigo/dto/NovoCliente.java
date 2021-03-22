@@ -7,16 +7,12 @@ import br.com.zupacademy.eduardoribeiro.casadocodigo.model.Pais;
 import br.com.zupacademy.eduardoribeiro.casadocodigo.validation.CpfOuCnpj;
 import br.com.zupacademy.eduardoribeiro.casadocodigo.validation.ExisteEntidade;
 import br.com.zupacademy.eduardoribeiro.casadocodigo.validation.Unico;
-import org.hibernate.validator.constraints.br.CNPJ;
-import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.util.Assert;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 public class NovoCliente {
 
