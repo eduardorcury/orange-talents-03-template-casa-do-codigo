@@ -1,6 +1,7 @@
 package br.com.zupacademy.eduardoribeiro.casadocodigo.model;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -16,6 +17,7 @@ public class Estado {
     @Column(nullable = false)
     private String nome;
 
+    @Valid
     @NotNull
     @ManyToOne(optional = false)
     private Pais pais;
