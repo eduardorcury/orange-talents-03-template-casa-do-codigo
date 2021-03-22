@@ -35,7 +35,6 @@ public class CpfOuCnpjValidator implements ConstraintValidator<CpfOuCnpj, String
         boolean cpfValido = cpfPatterns.stream().allMatch(pattern -> Pattern.matches(pattern, value));
 
         String cnpjPattern = "([0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})";
-
         boolean cnpjValido = Pattern.matches(cnpjPattern, value);
 
         return (cpfValido || cnpjValido);

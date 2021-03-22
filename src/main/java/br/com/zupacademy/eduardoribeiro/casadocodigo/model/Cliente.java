@@ -4,6 +4,7 @@ import br.com.zupacademy.eduardoribeiro.casadocodigo.validation.CpfOuCnpj;
 import br.com.zupacademy.eduardoribeiro.casadocodigo.validation.Unico;
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.util.Assert;
 
 import javax.persistence.*;
 import javax.validation.Valid;
@@ -95,6 +96,7 @@ public class Cliente {
     }
 
     public void setEstado(Estado estado) {
+        Assert.state(estado.pertenceAoPais(this.pais), "Estado não pertence ao país informado");
         this.estado = estado;
     }
 }

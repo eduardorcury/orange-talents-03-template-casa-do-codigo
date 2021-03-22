@@ -89,10 +89,7 @@ public class NovoCliente {
         Cliente cliente = new Cliente(this.email, this.nome, this.sobrenome, this.documento, this.endereco,
                 this.complemento, this.cidade, pais, this.telefone, this.cep);
 
-        Query query = entityManager.createQuery("select e from Estado e where e.pais = :pais")
-                .setParameter("pais", pais);
-
-        if (!query.getResultList().isEmpty()) {
+        if (pais.possuiEstados()) {
             Estado estado = entityManager.find(Estado.class, estadoId);
             Assert.state(estado != null, "Estado inexistente");
             cliente.setEstado(estado);

@@ -38,6 +38,10 @@ public class Estado {
         return nome;
     }
 
+    public boolean pertenceAoPais(Pais pais) {
+        return this.pais == pais;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
